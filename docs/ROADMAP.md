@@ -83,7 +83,7 @@ I can:
 
 ### Current Milestone
 
-Phase 4 (Visual Studio readiness verification) complete. All prerequisites and developer environment dependencies are verified and ready. Awaiting approval to proceed to Phase 5 (obtaining official BizTalk Server 2020 Developer installation media).
+Phase 5 media discovery complete: No existing media was found on the host or VM. The official Microsoft distribution channel is the Visual Studio Subscriptions / MSDN portal (`my.visualstudio.com`). Standing by for official base ISO acquisition before proceeding to BizTalk installation.
 
 ### Verified Professional Competencies
 

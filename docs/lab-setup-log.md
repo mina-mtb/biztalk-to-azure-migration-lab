@@ -199,3 +199,16 @@ Evaluated all prerequisites against official Microsoft BizTalk Server 2020 docum
   - Evaluation mode is fully functional and does not restrict BizTalk Developer Tools installation or project compilation.
   - Can be activated with a Visual Studio subscription or product key if extended usage is required.
 - **Readiness Conclusion**: Environment is **ready** for BizTalk Server 2020 Developer Tools integration.
+
+## Phase 5 — Official BizTalk Server 2020 Media Discovery & Acquisition Path
+
+- **Host and VM Media Search**:
+  - Searched host directories (`Downloads`, `Desktop`, `Documents`, `C:\ISO`, `C:\Setup`, `C:\Media`) and VM guest storage.
+  - No existing BizTalk Server 2020 base installation media ISO was present on the host or VM.
+- **Official Microsoft Distribution Channels Evaluated**:
+  - *Microsoft Download Center*: Publicly provides Cumulative Updates (CU1 through CU6), accelerators, and adapters, but does not provide the base installation media ISO.
+  - *Visual Studio Subscriptions Portal (`my.visualstudio.com`)*: Official primary Microsoft distribution channel for **BizTalk Server 2020 Developer Edition (x64, English)**. Requires an active Visual Studio / MSDN subscription sign-in.
+  - *Microsoft Volume Licensing / Microsoft 365 Admin Center (`admin.microsoft.com`)*: Official distribution channel for enterprise volume licensing customers.
+- **Action Required**:
+  - Manual download of the official Microsoft base ISO via authenticated subscriber portal is required.
+  - No unofficial, third-party, or repacked media will be used.
