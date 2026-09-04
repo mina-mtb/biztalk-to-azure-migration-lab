@@ -55,14 +55,15 @@ flowchart LR
 - [x] SQL Server readiness checkpoint created
 - [x] SQL Server 2019 updated to supported CU level (CU32 15.0.4430.1)
 - [x] Visual Studio 2019 Enterprise installed and verified
-- [x] BizTalk Server 2020 prerequisites verified and configured (.NET Framework, VC++ x86/x64, OLE DB 18.7.4.0, hardened local MSDTC)
-- [x] Stable prerequisite baseline completed
-- [x] Prerequisite architecture and learning review completed
+- [x] Visual Studio 2019 component readiness verified for BizTalk Developer Tools
+- [x] BizTalk Server 2020 prerequisites verified and configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, Hardened Local MSDTC)
+
+### In progress
+
+- [ ] Obtain official BizTalk Server 2020 Developer installation media
 
 ### Next
 
-- [ ] Verify Visual Studio readiness for BizTalk Developer Tools
-- [ ] Obtain official BizTalk Server 2020 Developer installation media
 - [ ] Install BizTalk Server 2020 core components
 - [ ] Configure BizTalk Server 2020 single-machine environment
 - [ ] Select and deploy a BizTalk sample application
