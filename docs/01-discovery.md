@@ -29,7 +29,7 @@ Windows Server 2019 Standard Evaluation with Desktop Experience is installed and
 | Windows Server 2019 | Installed and patched (10.0.17763.9121) |
 | SQL Server 2019 | Installed and patched (15.0.4430.1 CU32 Developer) |
 | Visual Studio 2019 | Installed (16.11.37530.7 Enterprise) |
-| BizTalk Prerequisites | Verified & configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, MSDTC) |
+| BizTalk Prerequisites | Verified & configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, Hardened Local MSDTC) |
 | BizTalk Server 2020 | Planned |
 
 ## Recovery Point

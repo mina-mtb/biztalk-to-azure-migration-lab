@@ -258,9 +258,24 @@ An OLE DB (Object Linking and Embedding Database) driver is a native data-access
 
 Verifying prerequisites against the active system before making changes prevents configuration drift, avoids duplicate or conflicting software versions (such as incompatible OLE DB or VC++ runtimes), minimizes the system attack surface, keeps the lab lightweight, and ensures every modification is deterministic, documented, and fully understood.
 
+### What is local MSDTC?
+
+Local MSDTC is the Windows transaction manager running on the local machine. It coordinates transactions between programs and databases running on that same computer using local memory and local inter-process communication (LPC).
+
+### What is Network DTC?
+
+Network DTC is an MSDTC capability that allows a transaction manager on one computer to coordinate distributed transactions with transaction managers and resource managers over the network on different computers.
+
+### Why did we disable Network DTC features in this lab?
+
+In our single-machine lab, BizTalk Server and SQL Server run on the exact same VM. They talk to local MSDTC locally without sending transaction packets across the network. Leaving Network DTC, remote RPC, XA transactions, and firewall ports enabled was unnecessary and opened security risks.
+
+### What does least privilege mean?
+
+Least privilege means granting a system, service, or user only the minimum permissions, features, and network access strictly required to perform its job, and nothing more.
+
 ## How This Document Grows
 
 This file is updated only when a concept has actually been studied or encountered in the lab.
 
 Future topics will include BizTalk artifacts, integration patterns, Azure services, resilience, security, observability, distributed transactions, and migration architecture. Their answers will be added only after those topics are studied.
-

@@ -57,8 +57,8 @@ I can:
 - [x] Create SQL-Server-2019-Ready checkpoint
 - [x] Update SQL Server 2019 to supported CU level (CU32 15.0.4430.1)
 - [x] Install Visual Studio Enterprise 2019
-- [x] Verify Visual Studio launch
-- [x] Verify and configure BizTalk Server 2020 prerequisites (.NET 4.8, VC++ 2015-2019 x86/x64, OLE DB 18.7.4.0, MSDTC)
+- [x] Verify Visual Studio
+- [x] Verify and configure BizTalk Server 2020 prerequisites (.NET 4.8, VC++ 2015-2019 x86/x64, OLE DB 18.7.4.0, Hardened Local MSDTC)
 
 ### Remaining Work
 
@@ -73,7 +73,7 @@ I can:
 
 ### Current Active Task
 
-Updating SQL Server 2019 from RTM to an appropriate supported CU/security build before BizTalk Server installation.
+Phase 3 complete. Awaiting user approval to proceed to Phase 4 (Visual Studio component verification) or Phase 5 (BizTalk installation media).
 
 ### Exit Criteria
 

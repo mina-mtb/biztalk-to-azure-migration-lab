@@ -126,18 +126,25 @@ Evaluated all prerequisites against official Microsoft BizTalk Server 2020 docum
    - Satisfies the BizTalk 2020 minimum requirement (18.3.0 or newer 18.x).
 
 4. **Microsoft Distributed Transaction Coordinator (MSDTC)**:
-   - Status: **Configured**.
-   - Initial state: Local service running, but Network DTC access, Inbound/Outbound transactions, and XA transactions were disabled.
-   - Applied configuration for standalone single-machine BizTalk + SQL lab:
-     - `InboundTransactionsEnabled`: `True`
-     - `OutboundTransactionsEnabled`: `True`
-     - `RemoteClientAccessEnabled`: `True`
-     - `RemoteAdministrationAccessEnabled`: `True`
-     - `XATransactionsEnabled`: `True`
-     - `LUTransactionsEnabled`: `True`
-     - `AuthenticationLevel`: `NoAuth` (recommended for non-domain/standalone lab environments without Kerberos KDC)
-   - Enabled predefined Windows Firewall rule group `Distributed Transaction Coordinator` (`MSDTC-In-TCP`, `MSDTC-Out-TCP`, `MSDTC-KTMRM-In-TCP`, `MSDTC-RPCSS-In-TCP`).
-   - Restarted `MSDTC` service and verified healthy state.
+   - Status: **Configured & Hardened (Least Privilege)**.
+   - **Configuration Evolution & Security Review**:
+     - *Initial Setup*: Configured with broad Network DTC capabilities (`Inbound`, `Outbound`, `RemoteClientAccess`, `RemoteAdministrationAccess`, `XA`, `LU6.2`, `NoAuth`, and enabled DTC firewall rules).
+     - *Topology Analysis & Reconsideration*: A security review evaluated the requirements of our single-machine lab topology where BizTalk Server and SQL Server execute on the same Windows Server 2019 VM.
+     - *Rationale for Hardening*: In a single-machine architecture, BizTalk host instances (`BTSNTSvc.exe`) and SQL Server (`sqlservr.exe`) interact with the local MSDTC proxy via local inter-process communication (LPC / shared memory). Remote network DTC protocols, external RPC endpoints, XA/LU gateways, and open firewall rules are unnecessary and needlessly widen the attack surface.
+     - *Applied Least-Privilege Settings*:
+       - `InboundTransactionsEnabled`: `False`
+       - `OutboundTransactionsEnabled`: `False`
+       - `RemoteClientAccessEnabled`: `False`
+       - `RemoteAdministrationAccessEnabled`: `False`
+       - `XATransactionsEnabled`: `False`
+       - `LUTransactionsEnabled`: `False`
+       - `AuthenticationLevel`: `Mutual`
+       - Distributed Transaction Coordinator firewall rule group: **Disabled** (0 active rules).
+   - **Post-Hardening Service & Connectivity Verification**:
+     - `MSDTC` service: `Running` with `Automatic` startup.
+     - `MSSQLSERVER` and `SQLSERVERAGENT` services: `Running` with `Automatic` startup.
+     - Local Windows-authenticated SQL connectivity: Verified via ADO.NET query against SQL Server 2019 CU32 (`15.0.4430.1`).
+     - Reboot pending: `False`.
 
 5. **Windows Features**:
    - Status: **Already satisfied**.

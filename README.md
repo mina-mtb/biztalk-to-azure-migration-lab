@@ -55,7 +55,7 @@ flowchart LR
 - [x] SQL Server readiness checkpoint created
 - [x] SQL Server 2019 updated to supported CU level (CU32 15.0.4430.1)
 - [x] Visual Studio 2019 Enterprise installed and verified
-- [x] BizTalk Server 2020 prerequisites verified and configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, MSDTC)
+- [x] BizTalk Server 2020 prerequisites verified and configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, Hardened Local MSDTC)
 
 ### In progress
 
@@ -105,8 +105,9 @@ The project tracks both hands-on implementation and the ability to understand, e
 | --- | --- |
 | Lab Foundation | In progress |
 | Windows Server | Installed and patched |
-| SQL Server | Installed; CU/security update in progress |
+| SQL Server | Installed and patched (CU32) |
 | Visual Studio | Installed |
+| BizTalk Prerequisites | Verified & configured (Hardened Local MSDTC) |
 | BizTalk Server | Not installed |
 | Microsoft BizTalk Pattern Labs | Not started |
 | Discovery | Not started |
