@@ -50,13 +50,14 @@ I can:
 - [x] Windows Server 2019 Standard Evaluation (Desktop Experience) installed
 - [x] VM networking verified
 - [x] Clean-Windows-Server-2019 checkpoint created
+- [x] Windows Server 2019 patched to latest security baseline (10.0.17763.9121)
 
 ### Remaining Work
 
 - [x] Install SQL Server 2019
 - [x] Verify SQL Server services
 - [x] Verify SQL connectivity
-- [ ] Install Visual Studio 2019
+- [x] Install Visual Studio 2019
 - [ ] Install required BizTalk development components
 - [ ] Install BizTalk Server 2020
 - [ ] Configure BizTalk Server 2020

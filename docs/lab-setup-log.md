@@ -16,9 +16,9 @@
 | Component | Status |
 | --- | --- |
 | VM | Running and healthy |
-| Windows Server | Installed |
+| Windows Server | Installed and patched (10.0.17763.9121) |
 | SQL Server | SQL Server 2019 Developer installed and verified |
-| Visual Studio | Not installed |
+| Visual Studio | Visual Studio 2019 Enterprise installed and verified |
 | BizTalk Server | Not installed |
 | Legacy application | Not deployed |
 | Azure migration | Not started |
@@ -49,3 +49,29 @@
 - TCP/IP remains disabled because the current lab uses a single-machine local connection.
 - Analysis Services, Reporting Services, Machine Learning Services, PolyBase, and BizTalk Server were not installed.
 - Created and verified the `SQL-Server-2019-Ready` Standard Hyper-V checkpoint.
+
+## Visual Studio 2019 Installation
+
+- Installed Visual Studio Enterprise 2019 version 16.11.37530.7.
+- Installed the .NET desktop development workload and its recommended components.
+- Restarted the VM after Setup requested a reboot.
+- Verified that Visual Studio is fully installed and launchable.
+- BizTalk Developer Tools, BizTalk Server, and additional Visual Studio workloads were not installed.
+
+## Windows Server 2019 Patching and Verification
+
+- Windows Update service queried and verified active.
+- Initial build: Windows Server 2019 Standard Evaluation Build `10.0.17763.3650`.
+- Identified, downloaded, and installed current critical, security, and cumulative updates:
+  - `KB5120238`: 2026-08 Cumulative Update for Windows Server 2019 (1809)
+  - `KB5121645`: 2026-08 Cumulative Update for .NET Framework 3.5, 4.7.2 and 4.8
+  - `KB4589208`: 2021-01 Update for Windows Server 2019 for x64-based Systems
+  - `KB890830`: Windows Malicious Software Removal Tool
+- Performed a graceful operating-system restart to commit update packages.
+- Post-reboot verification confirmed:
+  - Operating system build updated to `10.0.17763.9121`.
+  - Windows Firewall profiles (Domain, Private, Public) remained enabled and intact.
+  - UAC (`EnableLUA`) remained enabled and active.
+  - `MSSQLSERVER` and `SQLSERVERAGENT` services started automatically and are running healthy.
+  - Guest disk space: approximately 121.4 GB free.
+

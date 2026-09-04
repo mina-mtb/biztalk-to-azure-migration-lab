@@ -20,15 +20,15 @@ Discovery establishes what the legacy environment contains, how integrations beh
 
 ## Operating System
 
-Windows Server 2019 Standard Evaluation with Desktop Experience is installed successfully.
+Windows Server 2019 Standard Evaluation with Desktop Experience is installed and patched to build `10.0.17763.9121`.
 
 ## Planned Legacy Stack
 
 | Component | Status |
 | --- | --- |
-| Windows Server 2019 | Installed |
-| SQL Server 2019 | Planned |
-| Visual Studio 2019 | Planned |
+| Windows Server 2019 | Installed and patched (10.0.17763.9121) |
+| SQL Server 2019 | Installed (15.0.2000.5 Developer) |
+| Visual Studio 2019 | Installed (16.11.37530.7 Enterprise) |
 | BizTalk Server 2020 | Planned |
 
 ## Recovery Point

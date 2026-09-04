@@ -33,9 +33,9 @@ The project is currently in the legacy environment setup phase. Windows Server i
 flowchart LR
     Host[Host Windows] --> HyperV[Hyper-V]
     HyperV --> VM[BizTalk-Lab VM]
-    VM --> OS[Windows Server 2019<br/>Installed]
-    OS -. planned .-> SQL[SQL Server 2019<br/>Not yet installed]
-    OS -. planned .-> VS[Visual Studio 2019<br/>Not yet installed]
+    VM --> OS[Windows Server 2019<br/>Installed & Patched]
+    OS --> SQL[SQL Server 2019<br/>Installed & Verified]
+    OS --> VS[Visual Studio 2019<br/>Installed & Verified]
     OS -. planned .-> BTS[BizTalk Server 2020<br/>Not yet installed]
 ```
 
@@ -49,8 +49,10 @@ flowchart LR
 - [x] Windows Server 2019 Standard Evaluation (Desktop Experience) installed
 - [x] VM network verified
 - [x] Clean Windows Server checkpoint created
+- [x] Windows Server 2019 patched to latest security baseline (10.0.17763.9121)
 - [x] SQL Server 2019 Developer installed and verified
 - [x] SQL Server readiness checkpoint created
+- [x] Visual Studio 2019 Enterprise installed and verified
 
 ### In progress
 
@@ -58,7 +60,6 @@ flowchart LR
 
 ### Next
 
-- [ ] Install Visual Studio 2019
 - [ ] Install BizTalk Server 2020
 - [ ] Select and deploy a BizTalk sample application
 - [ ] Perform discovery and dependency analysis
