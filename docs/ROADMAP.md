@@ -55,12 +55,12 @@ I can:
 - [x] Verify SQL Server services
 - [x] Verify SQL connectivity
 - [x] Create SQL-Server-2019-Ready checkpoint
+- [x] Update SQL Server 2019 to supported CU level (CU32 15.0.4430.1)
 - [x] Install Visual Studio Enterprise 2019
 - [x] Verify Visual Studio launch
 
 ### Remaining Work
 
-- [ ] Update SQL Server 2019 to an appropriate supported CU/security build
 - [ ] Install required BizTalk development components
 - [ ] Install BizTalk Server 2020
 - [ ] Configure BizTalk Server 2020

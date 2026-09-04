@@ -17,7 +17,7 @@
 | --- | --- |
 | VM | Running and healthy |
 | Windows Server | Installed and patched (10.0.17763.9121) |
-| SQL Server | SQL Server 2019 Developer installed and verified |
+| SQL Server | SQL Server 2019 Developer CU32 (15.0.4430.1) installed and verified |
 | Visual Studio | Visual Studio 2019 Enterprise installed and verified |
 | BizTalk Server | Not installed |
 | Legacy application | Not deployed |
@@ -83,11 +83,20 @@
 - Commit: `a6c4d40`.
 - Message: `chore: patch Windows Server 2019 to latest security baseline`.
 
-## Current Active Phase
+## SQL Server 2019 Servicing (Cumulative Update 32)
 
-### Phase 2 — SQL Server 2019 Servicing
-
-- Status: In progress.
-- Current SQL baseline: `15.0.2000.5` RTM.
-- Goal: Move SQL Server 2019 to an appropriate current Microsoft-supported CU/security build compatible with the BizTalk Server 2020 lab.
-- No target CU or final SQL build has been recorded pending verification.
+- Queried official Microsoft SQL Server 2019 servicing information:
+  - Official Microsoft CU: `KB5054833` (SQL Server 2019 Cumulative Update 32).
+  - Target build: `15.0.4430.1`.
+- Downloaded official update package `SQLServer2019-KB5054833-x64.exe` directly from Microsoft Update Catalog CDN.
+- Verified Microsoft digital signature on installer package (`CN=Microsoft Corporation`).
+- Extracted and applied patch unattended: `SETUP.EXE /q /IAcceptSQLServerLicenseTerms /Action=Patch /AllInstances`.
+- Setup finished with ExitCode `0` (Success).
+- Post-patch verification confirmed:
+  - SQL Server build updated from `15.0.2000.5` (RTM) to `15.0.4430.1` (RTM-CU32).
+  - `MSSQLSERVER` service: `Running` with `Automatic` startup.
+  - `SQLSERVERAGENT` service: `Running` with `Automatic` startup.
+  - Local Windows-authenticated SQL connection verified via ADO.NET query against `master`.
+  - No unexpected SQL components or instances were added.
+  - No reboot was required (pending reboot flags verified as `False`).
+  - Existing Hyper-V checkpoints (`Clean-Windows-Server-2019`, `SQL-Server-2019-Ready`) remained intact and VM health verified.

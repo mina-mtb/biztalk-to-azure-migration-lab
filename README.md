@@ -27,14 +27,14 @@ The project takes a patterns-first, tools-second approach. Technology choices wi
 
 ## Current architecture status
 
-The project is currently in the legacy environment setup phase. Windows Server, SQL Server, and Visual Studio are installed; SQL Server servicing is in progress, and BizTalk Server is not installed.
+The project is currently in the legacy environment setup phase. Windows Server, SQL Server (CU32), and Visual Studio are installed and verified; BizTalk Server prerequisites are next.
 
 ```mermaid
 flowchart LR
     Host[Host Windows] --> HyperV[Hyper-V]
     HyperV --> VM[BizTalk-Lab VM]
     VM --> OS[Windows Server 2019<br/>Installed & Patched]
-    OS --> SQL[SQL Server 2019<br/>Installed & Verified]
+    OS --> SQL[SQL Server 2019 CU32<br/>Installed & Verified]
     OS --> VS[Visual Studio 2019<br/>Installed & Verified]
     OS -. planned .-> BTS[BizTalk Server 2020<br/>Not yet installed]
 ```
@@ -52,11 +52,12 @@ flowchart LR
 - [x] Windows Server 2019 patched to latest security baseline (10.0.17763.9121)
 - [x] SQL Server 2019 Developer installed and verified
 - [x] SQL Server readiness checkpoint created
+- [x] SQL Server 2019 updated to supported CU level (CU32 15.0.4430.1)
 - [x] Visual Studio 2019 Enterprise installed and verified
 
 ### In progress
 
-- [ ] Updating SQL Server 2019 from RTM to an appropriate supported CU/security build
+- [ ] Preparing BizTalk Server 2020 prerequisites
 
 ### Next
 
