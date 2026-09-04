@@ -1,31 +1,72 @@
 # Discovery
 
-This section will be completed during the discovery phase of the lab.
+## Purpose
 
-## Lab Environment
+Discovery establishes what the legacy environment contains, how integrations behave, and which systems and operational constraints depend on them. Migration decisions should be based on verified artifacts and flows rather than assumptions or direct product-to-product mapping.
 
-A local Hyper-V virtual machine is being used to create an isolated environment for the BizTalk migration lab.
+## Current Lab Environment
 
-| Setting | Current configuration |
+| Setting | Verified configuration |
 | --- | --- |
+| Hypervisor | Hyper-V |
 | VM name | BizTalk-Lab |
-| Generation | Generation 2 |
-| Startup memory | 12 GB (12288 MB) |
-| Dynamic Memory | Enabled |
+| Generation | 2 |
+| Startup memory | 8192 MB |
+| Dynamic memory | Enabled |
+| vCPU | 8 |
+| Disk | Dynamically expanding VHDX, 150 GB maximum |
 | Network | Hyper-V Default Switch |
-| Virtual disk | BizTalk-Lab.vhdx |
-| Maximum virtual disk size | 150 GB |
-| Disk type | Dynamically expanding |
+| Secure Boot | Enabled, `MicrosoftWindows` template |
+
+## Operating System
+
+Windows Server 2019 Standard Evaluation with Desktop Experience is installed successfully.
 
 ## Planned Legacy Stack
 
-**Status: Planned / not yet installed**
+| Component | Status |
+| --- | --- |
+| Windows Server 2019 | Installed |
+| SQL Server 2019 | Planned |
+| Visual Studio 2019 | Planned |
+| BizTalk Server 2020 | Planned |
 
-- Windows Server 2019
-- SQL Server 2019
-- Visual Studio 2019
-- BizTalk Server 2020
+## Recovery Point
 
-## Current Status
+`Clean-Windows-Server-2019` is a verified Standard Hyper-V checkpoint created after successful operating-system installation. It provides a safe rollback point before middleware and development tooling are installed.
 
-The VM configuration is currently in progress. The operating system has not yet been installed.
+## Discovery Questions
+
+Once BizTalk and a legacy sample application are installed, discovery will answer:
+
+- What BizTalk applications exist?
+- Which schemas are used?
+- Which maps are used?
+- Which orchestrations exist?
+- Which pipelines exist?
+- Which receive ports and receive locations exist?
+- Which send ports exist?
+- Which adapters are used?
+- Which systems depend on the integrations?
+- Which integrations are synchronous?
+- Which integrations are asynchronous?
+- Which integrations are high-volume?
+- Which messages are large?
+- Which transformations exist?
+- Which dependencies are tightly coupled?
+- Which business rules exist?
+- Which error-handling mechanisms exist?
+- Which security mechanisms exist?
+- Which integration patterns are present?
+
+## Discovery Output
+
+The discovery phase will eventually produce:
+
+- Artifact inventory
+- Dependency map
+- Integration flow diagrams
+- Integration pattern classification
+- Risk assessment
+- Migration candidates
+- Migration priority
