@@ -88,6 +88,10 @@ flowchart LR
 - Observability
 - Security and managed identity
 
+## Learning Notes
+
+Concise Q&A notes are maintained alongside the hands-on migration work for quick review and architecture recall. See [BizTalk to Azure — Learning Notes](docs/LEARNING-NOTES.md).
+
 ## Learning & Migration Roadmap
 
 The project tracks both hands-on implementation and the ability to understand, explain, and defend architecture decisions. The [master learning roadmap](docs/ROADMAP.md) defines completion standards, phased labs, expected deliverables, and senior-level readiness criteria.
