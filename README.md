@@ -27,7 +27,7 @@ The project takes a patterns-first, tools-second approach. Technology choices wi
 
 ## Current architecture status
 
-The project is currently in the legacy environment setup phase. Windows Server is installed; the legacy middleware and development tools are not.
+The project is currently in the legacy environment setup phase. Windows Server, SQL Server, and Visual Studio are installed; SQL Server servicing is in progress, and BizTalk Server is not installed.
 
 ```mermaid
 flowchart LR
@@ -56,7 +56,7 @@ flowchart LR
 
 ### In progress
 
-- [ ] Preparing the legacy BizTalk development environment
+- [ ] Updating SQL Server 2019 from RTM to an appropriate supported CU/security build
 
 ### Next
 
@@ -95,16 +95,15 @@ The project tracks both hands-on implementation and the ability to understand, e
 | Area | Status |
 | --- | --- |
 | Lab Foundation | In progress |
-| BizTalk Fundamentals | Not started |
-| Microsoft Pattern Labs | Not started |
+| Windows Server | Installed and patched |
+| SQL Server | Installed; CU/security update in progress |
+| Visual Studio | Installed |
+| BizTalk Server | Not installed |
+| Microsoft BizTalk Pattern Labs | Not started |
 | Discovery | Not started |
-| Migration Planning | Not started |
-| Azure Architecture | Not started |
-| Azure Implementation | Not started |
-| Resilience & Security | Not started |
+| Azure Migration | Not started |
 | Validation | Not started |
 | Deployment | Not started |
-| Senior-Level Readiness | Not started |
 
 ## Repository structure
 

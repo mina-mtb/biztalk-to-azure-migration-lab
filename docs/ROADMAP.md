@@ -51,13 +51,16 @@ I can:
 - [x] VM networking verified
 - [x] Clean-Windows-Server-2019 checkpoint created
 - [x] Windows Server 2019 patched to latest security baseline (10.0.17763.9121)
+- [x] Install SQL Server 2019 Developer
+- [x] Verify SQL Server services
+- [x] Verify SQL connectivity
+- [x] Create SQL-Server-2019-Ready checkpoint
+- [x] Install Visual Studio Enterprise 2019
+- [x] Verify Visual Studio launch
 
 ### Remaining Work
 
-- [x] Install SQL Server 2019
-- [x] Verify SQL Server services
-- [x] Verify SQL connectivity
-- [x] Install Visual Studio 2019
+- [ ] Update SQL Server 2019 to an appropriate supported CU/security build
 - [ ] Install required BizTalk development components
 - [ ] Install BizTalk Server 2020
 - [ ] Configure BizTalk Server 2020
@@ -65,6 +68,10 @@ I can:
 - [ ] Verify BizTalk development tools in Visual Studio
 - [ ] Verify BizTalk services and host instances
 - [ ] Create post-BizTalk checkpoint
+
+### Current Active Task
+
+Updating SQL Server 2019 from RTM to an appropriate supported CU/security build before BizTalk Server installation.
 
 ### Exit Criteria
 

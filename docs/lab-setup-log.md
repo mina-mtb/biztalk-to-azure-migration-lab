@@ -58,7 +58,10 @@
 - Verified that Visual Studio is fully installed and launchable.
 - BizTalk Developer Tools, BizTalk Server, and additional Visual Studio workloads were not installed.
 
-## Windows Server 2019 Patching and Verification
+## Phase 1 — Windows Server Update Baseline
+
+- Before: `10.0.17763.3650`.
+- After: `10.0.17763.9121`.
 
 - Windows Update service queried and verified active.
 - Initial build: Windows Server 2019 Standard Evaluation Build `10.0.17763.3650`.
@@ -75,3 +78,16 @@
   - `MSSQLSERVER` and `SQLSERVERAGENT` services started automatically and are running healthy.
   - Guest disk space: approximately 121.4 GB free.
 
+### Git Milestone
+
+- Commit: `a6c4d40`.
+- Message: `chore: patch Windows Server 2019 to latest security baseline`.
+
+## Current Active Phase
+
+### Phase 2 — SQL Server 2019 Servicing
+
+- Status: In progress.
+- Current SQL baseline: `15.0.2000.5` RTM.
+- Goal: Move SQL Server 2019 to an appropriate current Microsoft-supported CU/security build compatible with the BizTalk Server 2020 lab.
+- No target CU or final SQL build has been recorded pending verification.
