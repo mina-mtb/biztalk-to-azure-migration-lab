@@ -86,6 +86,24 @@ flowchart LR
 - Observability
 - Security and managed identity
 
+## Learning & Migration Roadmap
+
+The project tracks both hands-on implementation and the ability to understand, explain, and defend architecture decisions. The [master learning roadmap](docs/ROADMAP.md) defines completion standards, phased labs, expected deliverables, and senior-level readiness criteria.
+
+| Area | Status |
+| --- | --- |
+| Lab Foundation | In progress |
+| BizTalk Fundamentals | Not started |
+| Microsoft Pattern Labs | Not started |
+| Discovery | Not started |
+| Migration Planning | Not started |
+| Azure Architecture | Not started |
+| Azure Implementation | Not started |
+| Resilience & Security | Not started |
+| Validation | Not started |
+| Deployment | Not started |
+| Senior-Level Readiness | Not started |
+
 ## Repository structure
 
 - `docs/` contains discovery notes, architecture records, pattern analysis, the migration roadmap, and the lab setup log.
