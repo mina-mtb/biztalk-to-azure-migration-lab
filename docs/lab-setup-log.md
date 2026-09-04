@@ -19,7 +19,7 @@
 | Windows Server | Installed and patched (10.0.17763.9121) |
 | SQL Server | SQL Server 2019 Developer CU32 (15.0.4430.1) installed and verified |
 | Visual Studio | Visual Studio 2019 Enterprise installed and verified |
-| BizTalk Prerequisites | Verified & configured (VC++ x86/x64, OLE DB 18.7.4.0, .NET 4.8, MSDTC configured) |
+| BizTalk Prerequisites | Verified and configured (VC++ x86/x64, OLE DB 18.7.4.0, .NET Framework, local MSDTC) |
 | BizTalk Server | Not installed |
 | Legacy application | Not deployed |
 | Azure migration | Not started |
@@ -167,3 +167,15 @@ Evaluated all prerequisites against official Microsoft BizTalk Server 2020 docum
 - Reboot pending: `False` (No reboot required).
 - Guest disk space: `119.75 GB` free.
 
+## Stable Prerequisite Milestone
+
+- Stable prerequisite baseline reached.
+- Windows Server 2019 is installed and patched.
+- SQL Server 2019 Developer is installed, verified, and updated to CU32 (`15.0.4430.1`).
+- Visual Studio Enterprise 2019 is installed and verified.
+- Required BizTalk prerequisites were inspected and satisfied.
+- Local MSDTC is running and hardened for the current single-machine topology.
+- Network DTC capabilities and DTC firewall exposure remain disabled because they are not required by this topology.
+- SQL Server, MSDTC, and VM health checks passed after hardening.
+- BizTalk Server 2020 is not installed; pattern labs and Azure migration work have not started.
+- Infrastructure work is paused while the current architecture concepts are reviewed.

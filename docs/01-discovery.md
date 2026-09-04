@@ -29,12 +29,18 @@ Windows Server 2019 Standard Evaluation with Desktop Experience is installed and
 | Windows Server 2019 | Installed and patched (10.0.17763.9121) |
 | SQL Server 2019 | Installed and patched (15.0.4430.1 CU32 Developer) |
 | Visual Studio 2019 | Installed (16.11.37530.7 Enterprise) |
-| BizTalk Prerequisites | Verified & configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, Hardened Local MSDTC) |
+| BizTalk Prerequisites | Verified and configured (.NET Framework, VC++ x86/x64, OLE DB 18.7.4.0, hardened local MSDTC) |
 | BizTalk Server 2020 | Planned |
 
 ## Recovery Point
 
 `Clean-Windows-Server-2019` is a verified Standard Hyper-V checkpoint created after successful operating-system installation. It provides a safe rollback point before middleware and development tooling are installed.
+
+## Current Infrastructure Decision
+
+The planned topology places BizTalk Server, SQL Server, and local MSDTC in the same VM. Network DTC inbound, outbound, remote access, XA, LU, and related firewall exposure are therefore disabled; local MSDTC is retained with Mutual authentication.
+
+This is a topology-dependent least-privilege decision, not a universal BizTalk configuration. DTC requirements must be reassessed if BizTalk and SQL Server are later separated across machines.
 
 ## Discovery Questions
 

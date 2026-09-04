@@ -27,7 +27,7 @@ The project takes a patterns-first, tools-second approach. Technology choices wi
 
 ## Current architecture status
 
-The project is currently in the legacy environment setup phase. Windows Server, SQL Server (CU32), Visual Studio 2019, and BizTalk Server 2020 prerequisites are verified and configured.
+The project has reached a stable prerequisite baseline. Windows Server, SQL Server 2019 CU32, Visual Studio 2019, and the BizTalk Server 2020 prerequisites are installed or verified as applicable; BizTalk Server itself is not installed.
 
 ```mermaid
 flowchart LR
@@ -55,11 +55,11 @@ flowchart LR
 - [x] SQL Server readiness checkpoint created
 - [x] SQL Server 2019 updated to supported CU level (CU32 15.0.4430.1)
 - [x] Visual Studio 2019 Enterprise installed and verified
-- [x] BizTalk Server 2020 prerequisites verified and configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, Hardened Local MSDTC)
+- [x] BizTalk Server 2020 prerequisites verified and configured (.NET Framework, VC++ x86/x64, OLE DB 18.7.4.0, hardened local MSDTC)
 
 ### In progress
 
-- [ ] Visual Studio 2019 component readiness verification
+- [ ] Reviewing the current architecture concepts before BizTalk Server installation
 
 ### Next
 
@@ -123,4 +123,4 @@ The project tracks both hands-on implementation and the ability to understand, e
 
 ## Status
 
-This repository is a work in progress and will evolve as the migration lab progresses.
+Stable prerequisite baseline reached. Infrastructure work is paused while the current architecture concepts are reviewed before BizTalk Server installation.

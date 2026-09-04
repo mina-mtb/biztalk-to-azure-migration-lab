@@ -58,7 +58,16 @@ I can:
 - [x] Update SQL Server 2019 to supported CU level (CU32 15.0.4430.1)
 - [x] Install Visual Studio Enterprise 2019
 - [x] Verify Visual Studio
-- [x] Verify and configure BizTalk Server 2020 prerequisites (.NET 4.8, VC++ 2015-2019 x86/x64, OLE DB 18.7.4.0, Hardened Local MSDTC)
+- [x] Complete BizTalk Server 2020 prerequisite inspection
+- [x] Verify the .NET Framework prerequisite
+- [x] Verify the Visual C++ x86 prerequisite
+- [x] Verify the Visual C++ x64 prerequisite
+- [x] Verify the Microsoft OLE DB Driver prerequisite
+- [x] Review the MSDTC requirement for the planned topology
+- [x] Harden local MSDTC for the current single-machine topology
+- [x] Disable unnecessary Network DTC capabilities
+- [x] Remove unnecessary DTC firewall exposure
+- [x] Verify SQL Server, MSDTC, and VM health after hardening
 
 ### Remaining Work
 
@@ -71,17 +80,21 @@ I can:
 - [ ] Verify BizTalk services and host instances
 - [ ] Create post-BizTalk checkpoint
 
-### Current Active Task
+### Current Milestone
 
-Phase 3 complete. Awaiting user approval to proceed to Phase 4 (Visual Studio component verification) or Phase 5 (BizTalk installation media).
+Stable prerequisite baseline reached. Infrastructure work is paused while the current architecture concepts are reviewed before BizTalk Server installation.
 
 ### Exit Criteria
 
-- [ ] I can explain why BizTalk depends on SQL Server.
+- [ ] I can explain BizTalk's dependency on persistent SQL Server infrastructure.
 - [ ] I can explain the role of the BizTalk Management database.
 - [ ] I can explain the role of the MessageBox database.
-- [ ] I understand why this lab uses a VM.
-- [ ] I can explain the purpose of the clean checkpoint.
+- [ ] I can explain why the lab uses an isolated virtualized environment.
+- [ ] I can explain the purpose and limits of checkpoints in a controlled migration lab.
+- [ ] I can distinguish local from network distributed transaction requirements.
+- [ ] I can justify MSDTC configuration from the deployment topology.
+- [ ] I can apply least privilege when preparing integration infrastructure.
+- [ ] I can distinguish required prerequisites from optional platform components.
 
 
 ## Phase 1 — BizTalk Core Concepts
