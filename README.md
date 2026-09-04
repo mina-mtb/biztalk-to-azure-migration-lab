@@ -56,13 +56,12 @@ flowchart LR
 - [x] SQL Server 2019 updated to supported CU level (CU32 15.0.4430.1)
 - [x] Visual Studio 2019 Enterprise installed and verified
 - [x] BizTalk Server 2020 prerequisites verified and configured (.NET Framework, VC++ x86/x64, OLE DB 18.7.4.0, hardened local MSDTC)
-
-### In progress
-
-- [ ] Reviewing the current architecture concepts before BizTalk Server installation
+- [x] Stable prerequisite baseline completed
+- [x] Prerequisite architecture and learning review completed
 
 ### Next
 
+- [ ] Verify Visual Studio readiness for BizTalk Developer Tools
 - [ ] Obtain official BizTalk Server 2020 Developer installation media
 - [ ] Install BizTalk Server 2020 core components
 - [ ] Configure BizTalk Server 2020 single-machine environment
@@ -103,7 +102,7 @@ The project tracks both hands-on implementation and the ability to understand, e
 
 | Area | Status |
 | --- | --- |
-| Lab Foundation | In progress |
+| Lab Foundation | Complete |
 | Windows Server | Installed and patched |
 | SQL Server | Installed and patched (CU32) |
 | Visual Studio | Installed |
@@ -123,4 +122,4 @@ The project tracks both hands-on implementation and the ability to understand, e
 
 ## Status
 
-Stable prerequisite baseline reached. Infrastructure work is paused while the current architecture concepts are reviewed before BizTalk Server installation.
+The stable prerequisite baseline and its learning review are complete. The next technical phase is Visual Studio readiness verification followed by obtaining official BizTalk Server 2020 Developer media; BizTalk Server is not installed.

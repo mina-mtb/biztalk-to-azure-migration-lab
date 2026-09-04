@@ -82,19 +82,37 @@ I can:
 
 ### Current Milestone
 
-Stable prerequisite baseline reached. Infrastructure work is paused while the current architecture concepts are reviewed before BizTalk Server installation.
+Stable prerequisite baseline and learning review complete. The next technical phase is Visual Studio readiness verification followed by obtaining official BizTalk Server 2020 Developer media.
 
-### Exit Criteria
+### Verified Professional Competencies
 
-- [ ] I can explain BizTalk's dependency on persistent SQL Server infrastructure.
-- [ ] I can explain the role of the BizTalk Management database.
-- [ ] I can explain the role of the MessageBox database.
-- [ ] I can explain why the lab uses an isolated virtualized environment.
-- [ ] I can explain the purpose and limits of checkpoints in a controlled migration lab.
-- [ ] I can distinguish local from network distributed transaction requirements.
-- [ ] I can justify MSDTC configuration from the deployment topology.
-- [ ] I can apply least privilege when preparing integration infrastructure.
-- [ ] I can distinguish required prerequisites from optional platform components.
+- [x] Explain why the lab uses an isolated virtualized environment.
+- [x] Explain the purpose and limits of Hyper-V checkpoints in a controlled lab.
+- [x] Explain BizTalk's high-level dependency on persistent SQL Server infrastructure.
+- [x] Explain why SQL Server was installed and patched before BizTalk.
+- [x] Explain why prerequisites are inspected before missing components are installed.
+- [x] Distinguish required prerequisites from optional platform components.
+- [x] Explain the architectural role of MSDTC.
+- [x] Distinguish local MSDTC from Network DTC.
+- [x] Explain inbound and outbound Network DTC transaction directions.
+- [x] Explain Remote Client Access and Remote Administration Access in the DTC context.
+- [x] Explain the intended roles of XA and LU transaction support at a high level.
+- [x] Explain why Network DTC, XA, and LU are not required by the current topology.
+- [x] Explain the role of DTC firewall rules.
+- [x] Apply least-privilege reasoning to integration infrastructure.
+- [x] Justify the final MSDTC configuration from the current deployment topology.
+- [x] Explain why DTC requirements must be reassessed if BizTalk and SQL Server are separated across machines.
+- [x] Distinguish local transactions from distributed transactions.
+- [x] Explain the purpose of two-phase commit at a high level.
+- [x] Explain why cloud designs often prefer Saga and compensation over long-lived distributed transactions.
+- [x] Distinguish rollback from a compensating action.
+- [x] Explain eventual consistency at a conceptual level.
+- [x] Apply the sequence: understand the requirement, identify the pattern, then choose the technology.
+
+### Deferred BizTalk Database Competencies
+
+- [ ] Explain the detailed role of the BizTalk Management database.
+- [ ] Explain the detailed role of the MessageBox database.
 
 
 ## Phase 1 — BizTalk Core Concepts

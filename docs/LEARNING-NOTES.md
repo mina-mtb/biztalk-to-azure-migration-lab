@@ -101,6 +101,10 @@ Services, permissions, features, and network access should be enabled only when 
 
 Microsoft Distributed Transaction Coordinator coordinates transactions that span multiple transactional resource managers. It enables participants to commit or roll back as one transaction.
 
+### What is the difference between a local and a distributed transaction?
+
+A local transaction is controlled by one resource manager, such as one database instance. A distributed transaction coordinates changes across multiple transactional resources and needs a coordinator such as MSDTC.
+
 ### Why can BizTalk require MSDTC?
 
 BizTalk uses transactional processing across its runtime and SQL-backed persistence. MSDTC requirements depend on where BizTalk services, SQL Server, and other transactional resources are deployed.
@@ -113,9 +117,25 @@ Local MSDTC coordinates transactional work on one machine. Network DTC permits t
 
 The planned BizTalk runtime, SQL Server, and MSDTC are all inside one VM. Network DTC adds no capability required by this topology, so inbound, outbound, remote client, and remote administration access are disabled.
 
+### What do inbound and outbound mean for Network DTC?
+
+Inbound permits the machine to accept network transaction coordination initiated elsewhere. Outbound permits local applications to initiate or join distributed transactions with resources on other machines.
+
+### What are Remote Client Access and Remote Administration Access?
+
+Remote Client Access permits remote applications to use the local transaction manager. Remote Administration Access permits remote management of DTC configuration; neither is required in the current lab.
+
 ### Which other DTC capabilities were disabled?
 
 XA and LU transactions are disabled, and DTC firewall exposure was removed. Local MSDTC remains running with Mutual authentication.
+
+### What are XA and LU transaction support intended for?
+
+XA supports coordination with resource managers that implement the XA standard. LU support serves legacy IBM-style logical-unit transaction scenarios; the current Microsoft-only single-machine topology requires neither.
+
+### What is the role of DTC firewall configuration?
+
+Network DTC needs network paths for RPC and transaction coordination across machines. Because this lab uses only local DTC, exposing those firewall rules would add attack surface without a requirement.
 
 ### When would Network DTC become necessary?
 
@@ -124,6 +144,26 @@ It may become necessary if BizTalk and SQL Server, or another transactional part
 ### Is the current DTC configuration a universal BizTalk rule?
 
 No. It is a least-privilege decision for the current single-machine topology. A distributed topology can require a different configuration.
+
+### What is the purpose of two-phase commit?
+
+Two-phase commit asks all participants to prepare before the coordinator decides whether all should commit or roll back. It protects atomicity across participating transactional resources.
+
+### Why can two-phase commit be problematic in distributed or cloud systems?
+
+It couples participants to a coordinator and can hold locks or resources while waiting on network communication. Failures, latency, and service autonomy make long-lived distributed transactions difficult to operate at scale.
+
+### What is the difference between rollback and compensation?
+
+A rollback reverses uncommitted work inside a transaction. A compensating action is a new business operation that semantically offsets work that was already committed.
+
+### Why do cloud architectures often use Saga and compensation?
+
+A Saga divides a business process into separate local transactions and defines compensating actions for failures. This avoids one long-lived distributed transaction but requires explicit handling of partial progress and recovery.
+
+### What does eventual consistency mean?
+
+Eventual consistency allows participating systems to be temporarily out of sync while independent steps complete. The design must define acceptable delay, failure recovery, and how users or systems observe intermediate states.
 
 ## Operational Validation
 
@@ -151,7 +191,7 @@ An agent can miss topology, security, licensing, or operational context. Recomme
 
 ### What does “patterns first, tools second” mean?
 
-Identify the integration problem, constraints, and pattern before selecting an Azure service. Tool selection should follow the architecture need rather than define it.
+First understand the requirement and constraints, then identify the integration pattern, and only then choose the technology. Tool selection should follow the architecture need rather than define it.
 
 ## Migration Approach
 
