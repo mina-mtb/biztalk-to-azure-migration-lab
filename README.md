@@ -27,7 +27,7 @@ The project takes a patterns-first, tools-second approach. Technology choices wi
 
 ## Current architecture status
 
-The project is currently in the legacy environment setup phase. Windows Server, SQL Server (CU32), and Visual Studio are installed and verified; BizTalk Server prerequisites are next.
+The project is currently in the legacy environment setup phase. Windows Server, SQL Server (CU32), Visual Studio 2019, and BizTalk Server 2020 prerequisites are verified and configured.
 
 ```mermaid
 flowchart LR
@@ -36,6 +36,7 @@ flowchart LR
     VM --> OS[Windows Server 2019<br/>Installed & Patched]
     OS --> SQL[SQL Server 2019 CU32<br/>Installed & Verified]
     OS --> VS[Visual Studio 2019<br/>Installed & Verified]
+    OS --> PREREQ[BizTalk 2020 Prerequisites<br/>Verified & Configured]
     OS -. planned .-> BTS[BizTalk Server 2020<br/>Not yet installed]
 ```
 
@@ -54,14 +55,17 @@ flowchart LR
 - [x] SQL Server readiness checkpoint created
 - [x] SQL Server 2019 updated to supported CU level (CU32 15.0.4430.1)
 - [x] Visual Studio 2019 Enterprise installed and verified
+- [x] BizTalk Server 2020 prerequisites verified and configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, MSDTC)
 
 ### In progress
 
-- [ ] Preparing BizTalk Server 2020 prerequisites
+- [ ] Visual Studio 2019 component readiness verification
 
 ### Next
 
-- [ ] Install BizTalk Server 2020
+- [ ] Obtain official BizTalk Server 2020 Developer installation media
+- [ ] Install BizTalk Server 2020 core components
+- [ ] Configure BizTalk Server 2020 single-machine environment
 - [ ] Select and deploy a BizTalk sample application
 - [ ] Perform discovery and dependency analysis
 - [ ] Identify integration patterns

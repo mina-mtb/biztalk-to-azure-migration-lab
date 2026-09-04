@@ -58,12 +58,14 @@ I can:
 - [x] Update SQL Server 2019 to supported CU level (CU32 15.0.4430.1)
 - [x] Install Visual Studio Enterprise 2019
 - [x] Verify Visual Studio launch
+- [x] Verify and configure BizTalk Server 2020 prerequisites (.NET 4.8, VC++ 2015-2019 x86/x64, OLE DB 18.7.4.0, MSDTC)
 
 ### Remaining Work
 
-- [ ] Install required BizTalk development components
-- [ ] Install BizTalk Server 2020
-- [ ] Configure BizTalk Server 2020
+- [ ] Obtain official BizTalk Server 2020 Developer installation media
+- [ ] Install BizTalk Server 2020 core components
+- [ ] Configure BizTalk Server 2020 (single-machine configuration)
+- [ ] Apply latest BizTalk Server 2020 Cumulative Update
 - [ ] Verify BizTalk Administration Console
 - [ ] Verify BizTalk development tools in Visual Studio
 - [ ] Verify BizTalk services and host instances

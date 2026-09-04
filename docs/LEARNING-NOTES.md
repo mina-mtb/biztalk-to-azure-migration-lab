@@ -236,8 +236,31 @@ Small migration slices make each pattern easier to learn, test, compare, and cor
 
 A Big Bang change combines many technical and operational risks into one event. Incremental migration makes failures easier to isolate and recovery easier to plan.
 
+## Prerequisites & Distributed Transactions
+
+### What is a prerequisite?
+
+A prerequisite is a software component, library, runtime, or operating-system setting that must exist and function correctly before another application or middleware can be installed and operate reliably.
+
+### What is MSDTC?
+
+MSDTC (Microsoft Distributed Transaction Coordinator) is a Windows service that manages and coordinates transactions spanning multiple resource managers, such as databases, message queues, and distributed services, ensuring ACID properties (Atomicity, Consistency, Isolation, Durability) across distributed boundaries.
+
+### Why can BizTalk need MSDTC?
+
+BizTalk Server relies heavily on distributed transactions to ensure reliable message processing. When BizTalk receives, transforms, persists, and routes messages between the BizTalk MessageBox database (`BizTalkMsgBoxDb`), Management database (`BizTalkMgmtDb`), tracking databases (`BizTalkDTADb`), and external adapters or transactional endpoints, MSDTC coordinates two-phase commits (2PC). This guarantees that no messages are lost or duplicated if a process, service, or network failure occurs during a transaction.
+
+### What is an OLE DB driver?
+
+An OLE DB (Object Linking and Embedding Database) driver is a native data-access interface that allows client applications and middleware to communicate directly with SQL Server database engines over tabular data streams (TDS). BizTalk Server 2020 specifically uses Microsoft OLE DB Driver for SQL Server (MSOLEDBSQL 18.x) for its underlying management, configuration, and runtime database operations.
+
+### Why do we verify prerequisites instead of installing everything blindly?
+
+Verifying prerequisites against the active system before making changes prevents configuration drift, avoids duplicate or conflicting software versions (such as incompatible OLE DB or VC++ runtimes), minimizes the system attack surface, keeps the lab lightweight, and ensures every modification is deterministic, documented, and fully understood.
+
 ## How This Document Grows
 
 This file is updated only when a concept has actually been studied or encountered in the lab.
 
 Future topics will include BizTalk artifacts, integration patterns, Azure services, resilience, security, observability, distributed transactions, and migration architecture. Their answers will be added only after those topics are studied.
+

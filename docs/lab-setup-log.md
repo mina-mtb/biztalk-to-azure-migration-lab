@@ -19,6 +19,7 @@
 | Windows Server | Installed and patched (10.0.17763.9121) |
 | SQL Server | SQL Server 2019 Developer CU32 (15.0.4430.1) installed and verified |
 | Visual Studio | Visual Studio 2019 Enterprise installed and verified |
+| BizTalk Prerequisites | Verified & configured (VC++ x86/x64, OLE DB 18.7.4.0, .NET 4.8, MSDTC configured) |
 | BizTalk Server | Not installed |
 | Legacy application | Not deployed |
 | Azure migration | Not started |
@@ -100,3 +101,62 @@
   - No unexpected SQL components or instances were added.
   - No reboot was required (pending reboot flags verified as `False`).
   - Existing Hyper-V checkpoints (`Clean-Windows-Server-2019`, `SQL-Server-2019-Ready`) remained intact and VM health verified.
+
+## BizTalk Server 2020 Prerequisites Verification & Configuration
+
+Evaluated all prerequisites against official Microsoft BizTalk Server 2020 documentation:
+
+### Prerequisite Classification
+
+1. **.NET Framework**:
+   - Status: **Already satisfied**.
+   - Detected: .NET Framework 4.7.2 / 4.8 baseline (Release `461814`, Version `4.7.03190`) with security update `KB5121645`.
+   - Satisfies the BizTalk 2020 minimum requirement (.NET 4.7.2).
+
+2. **Microsoft Visual C++ 2015–2019 Redistributables**:
+   - Status: **Already satisfied**.
+   - Detected:
+     - `Microsoft Visual C++ 2015-2019 Redistributable (x86) - 14.29.30157`
+     - `Microsoft Visual C++ 2015-2019 Redistributable (x64) - 14.29.30157`
+   - Both 32-bit and 64-bit runtimes are present and satisfied.
+
+3. **Microsoft OLE DB Driver for SQL Server (MSOLEDBSQL)**:
+   - Status: **Already satisfied**.
+   - Detected: `Microsoft OLE DB Driver for SQL Server` version `18.7.4.0` (compatible 18.x series).
+   - Satisfies the BizTalk 2020 minimum requirement (18.3.0 or newer 18.x).
+
+4. **Microsoft Distributed Transaction Coordinator (MSDTC)**:
+   - Status: **Configured**.
+   - Initial state: Local service running, but Network DTC access, Inbound/Outbound transactions, and XA transactions were disabled.
+   - Applied configuration for standalone single-machine BizTalk + SQL lab:
+     - `InboundTransactionsEnabled`: `True`
+     - `OutboundTransactionsEnabled`: `True`
+     - `RemoteClientAccessEnabled`: `True`
+     - `RemoteAdministrationAccessEnabled`: `True`
+     - `XATransactionsEnabled`: `True`
+     - `LUTransactionsEnabled`: `True`
+     - `AuthenticationLevel`: `NoAuth` (recommended for non-domain/standalone lab environments without Kerberos KDC)
+   - Enabled predefined Windows Firewall rule group `Distributed Transaction Coordinator` (`MSDTC-In-TCP`, `MSDTC-Out-TCP`, `MSDTC-KTMRM-In-TCP`, `MSDTC-RPCSS-In-TCP`).
+   - Restarted `MSDTC` service and verified healthy state.
+
+5. **Windows Features**:
+   - Status: **Already satisfied**.
+   - Windows Server 2019 standard components verified.
+
+6. **Internet Information Services (IIS)**:
+   - Status: **Not required for current core-lab scope** (Kept disabled).
+   - IIS is required only for BAM Portal, REST APIs, or HTTP/SOAP adapter endpoints hosted in IIS. Core Runtime, Administration Tools, Developer Tools, and SDK do not require IIS.
+
+7. **Optional Components (BAM, EDI, SSIS, Analysis Services, SharePoint)**:
+   - Status: **Intentionally excluded** to maintain a lean, stable developer lab.
+
+### Post-Prerequisite Verification
+
+- Operating System: `Windows Server 2019 Standard Evaluation (10.0.17763.9121)`.
+- SQL Server: `MSSQLSERVER` and `SQLSERVERAGENT` running healthy on `15.0.4430.1` (CU32).
+- Local SQL Windows Authentication connectivity: Verified.
+- MSDTC service: `Running` (Automatic) with verified transaction settings.
+- Visual Studio 2019: Launchable and healthy (16.11.37530.7).
+- Reboot pending: `False` (No reboot required).
+- Guest disk space: `119.75 GB` free.
+
