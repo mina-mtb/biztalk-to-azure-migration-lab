@@ -83,7 +83,7 @@ I can:
 
 ### Current Milestone
 
-Phase 5 media discovery complete: No existing media was found on the host or VM. The official Microsoft distribution channel is the Visual Studio Subscriptions / MSDN portal (`my.visualstudio.com`). Standing by for official base ISO acquisition before proceeding to BizTalk installation.
+Phase 5 media discovery complete: Authenticated inspection confirmed that Azure for Students / Dev Essentials and Azure Marketplace do not provide BizTalk Server 2020 Developer installation media or pre-built Developer VM images. Visual Studio Standard (MSDN) or Volume Licensing entitlement is required for the installer bits. Awaiting decision on acquisition approach or migration lab track.
 
 ### Verified Professional Competencies
 

@@ -206,9 +206,10 @@ Evaluated all prerequisites against official Microsoft BizTalk Server 2020 docum
   - Searched host directories (`Downloads`, `Desktop`, `Documents`, `C:\ISO`, `C:\Setup`, `C:\Media`) and VM guest storage.
   - No existing BizTalk Server 2020 base installation media ISO was present on the host or VM.
 - **Official Microsoft Distribution Channels Evaluated**:
-  - *Microsoft Download Center*: Publicly provides Cumulative Updates (CU1 through CU6), accelerators, and adapters, but does not provide the base installation media ISO.
-  - *Visual Studio Subscriptions Portal (`my.visualstudio.com`)*: Official primary Microsoft distribution channel for **BizTalk Server 2020 Developer Edition (x64, English)**. Requires an active Visual Studio / MSDN subscription sign-in.
-  - *Microsoft Volume Licensing / Microsoft 365 Admin Center (`admin.microsoft.com`)*: Official distribution channel for enterprise volume licensing customers.
-- **Action Required**:
-  - Manual download of the official Microsoft base ISO via authenticated subscriber portal is required.
-  - No unofficial, third-party, or repacked media will be used.
+  - *Visual Studio Subscriptions Portal (`my.visualstudio.com`)*: The exclusive official distribution channel for the **BizTalk Server 2020 Developer Edition** base ISO (`.iso`). Requires a qualifying paid/commercial Visual Studio Subscription (Enterprise or Professional with standard MSDN benefits).
+  - *Azure for Students / Education Software Hub*: Authenticated verification confirmed that the Azure Education Software catalog includes Windows Server and SQL Server Developer, but **does not include BizTalk Server 2020**.
+  - *Azure Marketplace VM Images*: Microsoft does not provide a pre-configured "BizTalk Server 2020 Developer" VM image in Azure (and is deprecating commercial BizTalk VM offers). Deploying a VM in Azure provides only base Windows/SQL compute and does not solve the BizTalk media entitlement requirement.
+  - *Microsoft Download Center*: Publicly provides only Cumulative Updates (CU1 through CU6), accelerators, and adapters, but no base installation media.
+- **Entitlement Conclusion**:
+  - BizTalk Server 2020 Developer ISO is not available through Azure for Students or Dev Essentials.
+  - Obtaining the local BizTalk Server 2020 installer ISO requires an account with a qualifying standard Visual Studio (MSDN) Subscription or Microsoft Volume Licensing agreement.
