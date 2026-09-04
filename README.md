@@ -49,6 +49,8 @@ flowchart LR
 - [x] Windows Server 2019 Standard Evaluation (Desktop Experience) installed
 - [x] VM network verified
 - [x] Clean Windows Server checkpoint created
+- [x] SQL Server 2019 Developer installed and verified
+- [x] SQL Server readiness checkpoint created
 
 ### In progress
 
@@ -56,7 +58,6 @@ flowchart LR
 
 ### Next
 
-- [ ] Install SQL Server 2019
 - [ ] Install Visual Studio 2019
 - [ ] Install BizTalk Server 2020
 - [ ] Select and deploy a BizTalk sample application

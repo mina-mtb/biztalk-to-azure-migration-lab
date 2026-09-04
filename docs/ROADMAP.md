@@ -53,9 +53,9 @@ I can:
 
 ### Remaining Work
 
-- [ ] Install SQL Server 2019
-- [ ] Verify SQL Server services
-- [ ] Verify SQL connectivity
+- [x] Install SQL Server 2019
+- [x] Verify SQL Server services
+- [x] Verify SQL connectivity
 - [ ] Install Visual Studio 2019
 - [ ] Install required BizTalk development components
 - [ ] Install BizTalk Server 2020
