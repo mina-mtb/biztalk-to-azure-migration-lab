@@ -193,6 +193,30 @@ An agent can miss topology, security, licensing, or operational context. Recomme
 
 First understand the requirement and constraints, then identify the integration pattern, and only then choose the technology. Tool selection should follow the architecture need rather than define it.
 
+### What is the architectural difference between a queue and a topic?
+
+A queue distributes each message to one receiver, including one of several competing receivers. A topic copies a published message to independent subscriptions, enabling one-to-many delivery.
+
+### What is the difference between a command and an event?
+
+A command asks a specific capability to perform an action and normally has an intended handler. An event states that something happened and may have zero, one, or many interested consumers.
+
+### What problem do competing consumers solve?
+
+Multiple receiver instances draw work from the same queue so processing capacity can scale. Each message is handled by one consumer, unlike publish/subscribe where each subscription receives its own copy.
+
+### Why use subscription filters?
+
+Filters route only matching topic messages into a subscription. They can keep simple routing rules in broker configuration, but complex business logic may belong elsewhere.
+
+### How do durable messaging and event notification differ?
+
+Durable messaging is appropriate when work must remain available until a consumer processes it. Event notification announces that something happened; the choice depends on delivery, retention, consumer, and response requirements.
+
+### Why begin with Service Bus Explorer instead of custom code?
+
+The Portal tool exposes send, peek, receive, settlement, redelivery, and dead-letter behavior without introducing an application. Code is added only when the behavior under study requires it.
+
 ## Migration Approach
 
 ### Why does discovery precede migration design?

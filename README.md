@@ -60,10 +60,13 @@ flowchart LR
 
 ### In progress
 
-- [ ] Obtain official BizTalk Server 2020 Developer installation media
+- [ ] BizTalk Server 2020 media acquisition `[BLOCKED — installation media]`
+- [ ] Prepare the first Azure-side integration-pattern exercise
 
 ### Next
 
+- [ ] Run the Service Bus queue delivery and settlement lab
+- [ ] Resume BizTalk Server 2020 installation when legitimate supported media is available
 - [ ] Install BizTalk Server 2020 core components
 - [ ] Configure BizTalk Server 2020 single-machine environment
 - [ ] Select and deploy a BizTalk sample application
@@ -93,6 +96,12 @@ flowchart LR
 - Observability
 - Security and managed identity
 
+## Current execution strategy
+
+BizTalk Server 2020 installation is temporarily blocked by legitimate installation-media availability, but the prepared VM baseline and BizTalk track remain preserved. Azure-side integration exercises will proceed in parallel using official Microsoft guidance, with emphasis on observable behavior, failure modes, service-selection reasoning, and later comparison with BizTalk—not on writing applications from scratch.
+
+The reviewed sequence and source links are in [Azure Integration Pattern Labs](docs/AZURE-PATTERN-LABS.md).
+
 ## Learning Notes
 
 Concise Q&A notes are maintained alongside the hands-on migration work for quick review and architecture recall. See [BizTalk to Azure — Learning Notes](docs/LEARNING-NOTES.md).
@@ -117,10 +126,10 @@ The project tracks both hands-on implementation and the ability to understand, e
 
 ## Repository structure
 
-- `docs/` contains discovery notes, architecture records, pattern analysis, the migration roadmap, and the lab setup log.
+- `docs/` contains discovery notes, architecture records, the migration roadmap, the Azure pattern-lab execution plan, learning notes, and the lab setup log.
 - `legacy-biztalk/` is reserved for the legacy sample solution and related artifacts after they exist.
 - `azure/` is reserved for future Azure implementation artifacts after migration design is complete.
 
 ## Status
 
-The stable prerequisite baseline and its learning review are complete. The next technical phase is Visual Studio readiness verification followed by obtaining official BizTalk Server 2020 Developer media; BizTalk Server is not installed.
+The stable prerequisite baseline, learning review, and Visual Studio readiness verification are complete. BizTalk Server is not installed because legitimate media acquisition is blocked; the next executable task is the first Azure-side queue behavior lab after subscription and cost approval.

@@ -72,7 +72,7 @@ I can:
 
 ### Remaining Work
 
-- [ ] Obtain official BizTalk Server 2020 Developer installation media
+- [ ] Obtain official BizTalk Server 2020 Developer installation media `[BLOCKED — installation media]`
 - [ ] Install BizTalk Server 2020 core components
 - [ ] Configure BizTalk Server 2020 (single-machine configuration)
 - [ ] Apply latest BizTalk Server 2020 Cumulative Update
@@ -83,7 +83,7 @@ I can:
 
 ### Current Milestone
 
-Phase 5 media discovery complete: Authenticated inspection confirmed that Azure for Students / Dev Essentials and Azure Marketplace do not provide BizTalk Server 2020 Developer installation media or pre-built Developer VM images. Visual Studio Standard (MSDN) or Volume Licensing entitlement is required for the installer bits. Awaiting decision on acquisition approach or migration lab track.
+Phase 5 media discovery confirmed that the current entitlements do not provide BizTalk Server 2020 Developer media. The prepared BizTalk baseline remains preserved; Azure-side pattern validation proceeds while legitimate media acquisition is blocked.
 
 ### Verified Professional Competencies
 
@@ -114,6 +114,43 @@ Phase 5 media discovery complete: Authenticated inspection confirmed that Azure 
 
 - [ ] Explain the detailed role of the BizTalk Management database.
 - [ ] Explain the detailed role of the MessageBox database.
+
+## Current Execution Order — Azure-Side Validation While BizTalk Installation Is Blocked
+
+This is deliberate engineering sequencing, not a project pivot. Azure behavior can be exercised now; later BizTalk labs will provide the evidence needed for product comparison and migration decisions.
+
+```text
+Azure pattern validation now
+        +
+BizTalk labs when media is available
+        -> compare behavior
+        -> record migration decisions
+        -> design the Azure target architecture
+```
+
+Detailed exercise plans and verified Microsoft references are maintained in [Azure Integration Pattern Labs](AZURE-PATTERN-LABS.md). Existing Phases 6–9 remain authoritative; completing an Azure exercise does not complete a BizTalk comparison or migration item.
+
+### Active Sequence
+
+1. Queue delivery and message settlement in Service Bus Explorer
+2. Small Service Bus workflow with Logic Apps Consumption; then competing consumers
+3. Topic, independent subscriptions, and subscription filters
+4. Message contract validation and transformation
+5. Retry, timeout, dead-lettering, replay, and duplicate-effect prevention
+6. API mediation and event notification, after subscription and cost checks
+7. Splitter, sessions/ordering, aggregator, scatter-gather, Claim Check, and Saga
+
+### Current First Exercise
+
+- [ ] Confirm Azure subscription, regional availability, and current pricing
+- [ ] Approve a cost estimate and cleanup plan before deployment
+- [ ] Create only a Service Bus namespace and queue
+- [ ] Send and inspect a test order with Service Bus Explorer
+- [ ] Complete one delivery and abandon another to observe redelivery
+- [ ] Record the observed behavior and migration lesson
+- [ ] Delete the temporary resources and verify cleanup
+
+No Azure resource has been created and no Azure exercise has been run yet.
 
 
 ## Phase 1 — BizTalk Core Concepts
