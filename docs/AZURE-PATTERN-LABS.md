@@ -13,6 +13,8 @@ Requirement -> Pattern -> Technology
 
 Official guidance and Portal-based exercises are preferred. Application code is introduced only when the required behavior cannot be observed another way; any .NET Service Bus code must use `Azure.Messaging.ServiceBus` rather than the retiring legacy SDKs.
 
+The consolidation principle is **minimum labs, maximum competency coverage**. Closely related queue behaviors should extend the same lab; a new lab is justified only when the integration pattern, topology, or Azure capability materially changes.
+
 ## Completion Standard
 
 An exercise is complete only when all applicable evidence exists.
@@ -62,7 +64,36 @@ Use one Service Bus queue and the Portal's Service Bus Explorer. Send an order m
 - [Use Service Bus Explorer for data operations](https://learn.microsoft.com/azure/service-bus-messaging/explorer)
 - [Prevent message loss and duplicate processing](https://learn.microsoft.com/azure/service-bus-messaging/service-bus-message-loss-and-duplicates)
 
-**Status:** References reviewed; subscription and cost validation pending; not deployed.
+#### Verified environment
+
+- Azure for Students subscription: active
+- Region: Sweden Central
+- Service Bus namespace: Basic tier, provisioning succeeded
+- Queue: `q1`, 1 GB maximum size
+- Resource identifiers and directory details are intentionally omitted from this public document.
+
+#### Verified work
+
+- [x] Create the Service Bus namespace and queue.
+- [x] Send multiple JSON order messages.
+- [x] Inspect messages with Peek and Peek from start.
+- [x] Confirm that Peek does not consume or settle a message.
+- [x] Receive messages in PeekLock mode.
+- [x] Complete a message and observe its removal from the active queue.
+- [x] Dead-letter a selected message and inspect the result.
+- [x] Confirm that Service Bus accepts a malformed JSON body without schema validation.
+- [x] Change maximum delivery count to `7`.
+- [x] Explore dead-letter settings and behavior.
+- [ ] Abandon a locked message and observe redelivery.
+- [ ] Explain the queue configuration trade-offs and complete the architecture review.
+- [ ] Record the final A1 migration lesson.
+- [ ] Delete temporary resources and verify cleanup.
+
+#### Consumer extension — in progress
+
+A .NET 8 Azure Function App deployment was initiated in Sweden Central using Flex Consumption and the existing lab resource group. Deployment success has not been verified, so Function App creation and the Service Bus consumer remain incomplete.
+
+The next objective is a minimal Service Bus-triggered consumer that exposes settlement decisions in processing logic. This is an extension of A1, not a separate coding-focused project.
 
 ### A2 — Small Workflow and Competing Consumers
 
@@ -149,7 +180,7 @@ API Management tier availability and cost must be checked against the actual sub
 
 - Official sources for the sequence have been reviewed.
 - The first exercise is A1 — Queue Delivery and Settlement.
-- Azure subscription balance, permissions, regional availability, and live pricing have not yet been inspected.
-- No Azure resource has been created.
-- No Azure pattern exercise has been completed.
+- A Basic Service Bus namespace and queue have been created and exercised through Service Bus Explorer.
+- A Function App deployment has been initiated but not verified.
+- A1 remains in progress; no Azure pattern exercise has been completed.
 - No BizTalk behavior comparison or migration claim has been completed.

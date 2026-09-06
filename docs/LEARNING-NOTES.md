@@ -217,6 +217,62 @@ Durable messaging is appropriate when work must remain available until a consume
 
 The Portal tool exposes send, peek, receive, settlement, redelivery, and dead-letter behavior without introducing an application. Code is added only when the behavior under study requires it.
 
+### What does Peek do?
+
+Peek inspects available messages without locking, consuming, or settling them. It is useful for diagnostics but does not represent successful processing.
+
+### What does PeekLock do?
+
+PeekLock receives a message under a temporary exclusive lock. The consumer must then explicitly complete, abandon, defer, or dead-letter it.
+
+### What does Complete mean?
+
+Complete records successful processing and settles the message. The message is removed from the active queue.
+
+### What does Abandon mean?
+
+Abandon releases the current lock and makes the message available for redelivery. It is appropriate when processing cannot complete now and retry may succeed.
+
+### What does Defer mean?
+
+Defer keeps a valid message for explicit retrieval later, normally by sequence number. It is used when processing must wait for application-specific conditions rather than follow normal delivery order.
+
+### What does Dead-letter mean?
+
+Dead-letter isolates a message that cannot proceed through normal processing. It preserves the message for investigation, correction, or controlled recovery.
+
+### Does Service Bus validate a JSON message against a business schema?
+
+No. Service Bus treats an arbitrary message body as payload and can accept malformed or business-invalid JSON. Consumer logic must validate the contract and choose the appropriate settlement outcome.
+
+### What does maximum queue size control?
+
+Maximum queue size limits the storage capacity available to the entity. Capacity should be selected from expected message size, backlog, outage duration, and cost or tier constraints.
+
+### What does maximum delivery count control?
+
+It limits repeated delivery attempts after locks are abandoned or expire. When the count is exceeded, Service Bus moves the message to the dead-letter queue.
+
+### What does message TTL control?
+
+Time to live defines how long a message remains valid in the entity. After expiration, Service Bus removes it or dead-letters it when dead-lettering on expiration is enabled.
+
+### What does lock duration control?
+
+Lock duration defines the initial period in which a PeekLock receiver has exclusive processing rights. Long processing may require lock renewal; an expired lock can cause redelivery.
+
+### Why consider dead-lettering on expiration?
+
+It retains expired messages for investigation instead of silently removing them. The choice depends on recovery needs, operational workload, retention, and data sensitivity.
+
+### Why was partitioning left disabled?
+
+Partitioning was not enabled without a throughput and ordering requirement. Its impact on concurrency, availability, sessions, and ordering scope must be evaluated before the topology is changed.
+
+### What ordering question should be answered before selecting sessions or partitioning?
+
+Is ordering required globally, or only per business entity such as `OrderId`, `CustomerId`, or `AccountId`? If ordering is per entity, Service Bus sessions should be evaluated so entities can process concurrently while preserving order within each session.
+
 ## Migration Approach
 
 ### Why does discovery precede migration design?

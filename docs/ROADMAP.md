@@ -142,15 +142,20 @@ Detailed exercise plans and verified Microsoft references are maintained in [Azu
 
 ### Current First Exercise
 
-- [ ] Confirm Azure subscription, regional availability, and current pricing
+- [x] Confirm Azure subscription access and regional availability
+- [ ] Confirm current pricing and review accumulated cost
 - [ ] Approve a cost estimate and cleanup plan before deployment
-- [ ] Create only a Service Bus namespace and queue
-- [ ] Send and inspect a test order with Service Bus Explorer
-- [ ] Complete one delivery and abandon another to observe redelivery
+- [x] Create a Basic Service Bus namespace and queue
+- [x] Send and inspect test orders with Service Bus Explorer
+- [x] Complete a delivery and observe removal from the active queue
+- [x] Dead-letter a selected message and inspect the result
+- [ ] Abandon a delivery and observe redelivery
+- [ ] Verify Function App deployment `[IN PROGRESS]`
+- [ ] Connect a minimal .NET 8 Azure Function consumer to the queue
 - [ ] Record the observed behavior and migration lesson
 - [ ] Delete the temporary resources and verify cleanup
 
-No Azure resource has been created and no Azure exercise has been run yet.
+A1 Portal work is partially complete. Function App provisioning was initiated but has not been verified; consumer implementation and the overall exercise remain incomplete.
 
 
 ## Phase 1 — BizTalk Core Concepts

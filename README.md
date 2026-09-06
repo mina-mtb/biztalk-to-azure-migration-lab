@@ -57,15 +57,17 @@ flowchart LR
 - [x] Visual Studio 2019 Enterprise installed and verified
 - [x] Visual Studio 2019 component readiness verified for BizTalk Developer Tools
 - [x] BizTalk Server 2020 prerequisites verified and configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, Hardened Local MSDTC)
+- [x] Basic Service Bus namespace and queue created; send, Peek, PeekLock, Complete, and dead-letter behavior observed in the Portal
 
 ### In progress
 
 - [ ] BizTalk Server 2020 media acquisition `[BLOCKED — installation media]`
-- [ ] Prepare the first Azure-side integration-pattern exercise
+- [ ] A1 Service Bus Queue Delivery and Settlement
+- [ ] Verify the initiated .NET 8 Function App deployment
 
 ### Next
 
-- [ ] Run the Service Bus queue delivery and settlement lab
+- [ ] Connect a minimal Azure Function consumer to the Service Bus queue
 - [ ] Resume BizTalk Server 2020 installation when legitimate supported media is available
 - [ ] Install BizTalk Server 2020 core components
 - [ ] Configure BizTalk Server 2020 single-machine environment
