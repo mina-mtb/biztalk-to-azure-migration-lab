@@ -149,13 +149,23 @@ Detailed exercise plans and verified Microsoft references are maintained in [Azu
 - [x] Send and inspect test orders with Service Bus Explorer
 - [x] Complete a delivery and observe removal from the active queue
 - [x] Dead-letter a selected message and inspect the result
-- [ ] Abandon a delivery and observe redelivery
-- [ ] Verify Function App deployment `[IN PROGRESS]`
-- [ ] Connect a minimal .NET 8 Azure Function consumer to the queue
+- [x] Abandon a delivery and observe redelivery
+- [x] Verify the F11 Function App deployment
+- [x] Connect a minimal .NET 10 isolated Azure Function consumer to the queue
+- [x] Build and publish the Release artifact
+- [x] Verify `.azurefunctions/` and `host.json` at the deployment package root
+- [x] Deploy the published artifact through the Flex Consumption One Deploy path
+- [x] Verify Function discovery and inspect trigger metadata, integration, and invocations
+- [x] Use the Function app setting to control whether ProcessOrderMessage is enabled
+- [x] Observe the automated Complete path
+- [x] Observe invalid JSON being dead-lettered by consumer validation
+- [x] Observe the automated Abandon path and message redelivery
+- [ ] Observe the Defer path and record the sequence number
+- [ ] Retrieve a deferred message explicitly by sequence number
 - [ ] Record the observed behavior and migration lesson
 - [ ] Delete the temporary resources and verify cleanup
 
-A1 Portal work is partially complete. Function App provisioning was initiated but has not been verified; consumer implementation and the overall exercise remain incomplete.
+A1 has a deployed .NET 10 isolated consumer with explicit settlement. Complete, consumer-driven dead-letter, and Abandon/redelivery behavior have been observed. Defer retrieval, the final migration lesson, architecture review, and cleanup remain incomplete.
 
 
 ## Phase 1 — BizTalk Core Concepts
@@ -837,15 +847,15 @@ For every integration answer:
 
 ### Azure Service Bus
 
-- [ ] Queue
+- [x] Queue
 - [ ] Topic
 - [ ] Subscription
 - [ ] Sessions
-- [ ] Dead-letter queue
+- [x] Dead-letter queue
 - [ ] Duplicate detection
 - [ ] Scheduled messages
-- [ ] TTL
-- [ ] Locking
+- [x] TTL
+- [x] Locking
 - [ ] Competing consumers
 
 ### Azure Event Grid
@@ -867,7 +877,7 @@ For every integration answer:
 
 ### Azure Functions
 
-- [ ] Event-driven compute
+- [x] Event-driven compute
 - [ ] When Functions are preferable to Logic Apps
 - [ ] Scaling implications
 

@@ -52,7 +52,7 @@ Azure observation and BizTalk migration validation are recorded separately. The 
 
 **Question:** What happens to work when the destination processor is unavailable or does not complete processing?
 
-Use one Service Bus queue and the Portal's Service Bus Explorer. Send an order message, inspect it, complete one delivery, and abandon another to observe redelivery. This first exercise requires no custom producer, consumer, VM, Function App, or competing-consumer implementation.
+The exercise began with one Service Bus queue and the Portal's Service Bus Explorer, then extended the same lab with a minimal Azure Function consumer to observe explicit settlement in code. No separate producer, VM, or competing-consumer implementation is required for A1.
 
 **Patterns and behavior:** asynchronous point-to-point messaging, temporal decoupling, durable buffering, peek-lock settlement, and redelivery.
 
@@ -69,7 +69,8 @@ Use one Service Bus queue and the Portal's Service Bus Explorer. Send an order m
 - Azure for Students subscription: active
 - Region: Sweden Central
 - Service Bus namespace: Basic tier, provisioning succeeded
-- Queue: `q1`, 1 GB maximum size
+- Queue: `q1`, 1 GB maximum size, 1-minute lock duration, maximum delivery count `10`
+- Function App: `F11`, Flex Consumption, .NET 10 isolated, running
 - Resource identifiers and directory details are intentionally omitted from this public document.
 
 #### Verified work
@@ -82,18 +83,31 @@ Use one Service Bus queue and the Portal's Service Bus Explorer. Send an order m
 - [x] Complete a message and observe its removal from the active queue.
 - [x] Dead-letter a selected message and inspect the result.
 - [x] Confirm that Service Bus accepts a malformed JSON body without schema validation.
-- [x] Change maximum delivery count to `7`.
+- [x] Verify the current maximum delivery count of `10`.
 - [x] Explore dead-letter settings and behavior.
-- [ ] Abandon a locked message and observe redelivery.
+- [x] Abandon a locked message and observe redelivery.
 - [ ] Explain the queue configuration trade-offs and complete the architecture review.
 - [ ] Record the final A1 migration lesson.
 - [ ] Delete temporary resources and verify cleanup.
 
-#### Consumer extension — in progress
+#### Consumer extension — deployed and partially exercised
 
-A .NET 8 Azure Function App deployment was initiated in Sweden Central using Flex Consumption and the existing lab resource group. Deployment success has not been verified, so Function App creation and the Service Bus consumer remain incomplete.
+`ProcessOrderMessage` is deployed to the `F11` Flex Consumption Function App using the .NET 10 isolated worker model. Its Service Bus trigger reads from `q1`, references an Azure-side connection setting, and keeps `AutoCompleteMessages = false` so the consumer controls settlement explicitly.
 
-The next objective is a minimal Service Bus-triggered consumer that exposes settlement decisions in processing logic. This is an extension of A1, not a separate coding-focused project.
+The Release build and publish succeeded. The deployment package was verified to contain `.azurefunctions/` and `host.json` at its root and to exclude `local.settings.json`. An initial VS Code deployment failed because the source tree, rather than the publish output, was packaged; deploying the correctly packaged publish output through One Deploy succeeded.
+
+- [x] Implement explicit Complete, Dead-letter, Abandon, and Defer paths.
+- [x] Implement consumer validation for malformed JSON and missing required fields.
+- [x] Build and publish the .NET 10 isolated project.
+- [x] Deploy the correct publish artifact and discover ProcessOrderMessage in F11.
+- [x] Inspect Function metadata, integration, and a successful invocation.
+- [x] Observe a valid `testAction = "complete"` message completing successfully.
+- [x] Observe malformed JSON being dead-lettered with reason `InvalidJson`.
+- [x] Observe `testAction = "abandon"` making the message available for redelivery.
+- [ ] Send and observe a `testAction = "defer"` message and record its sequence number.
+- [ ] Retrieve the deferred message explicitly by sequence number.
+
+The app setting `AzureWebJobs.ProcessOrderMessage.Disabled` has been used as the operational enable/disable control during deployment and controlled testing. The Service Bus connection value remains in Azure configuration and is not stored in source control.
 
 ### A2 — Small Workflow and Competing Consumers
 
@@ -181,6 +195,7 @@ API Management tier availability and cost must be checked against the actual sub
 - Official sources for the sequence have been reviewed.
 - The first exercise is A1 — Queue Delivery and Settlement.
 - A Basic Service Bus namespace and queue have been created and exercised through Service Bus Explorer.
-- A Function App deployment has been initiated but not verified.
-- A1 remains in progress; no Azure pattern exercise has been completed.
+- The F11 Function App and ProcessOrderMessage consumer have been deployed and verified.
+- Complete, consumer-driven dead-letter, and Abandon/redelivery behavior have been observed.
+- A1 remains in progress because Defer retrieval, the final architecture review, migration lesson, and cleanup are not complete.
 - No BizTalk behavior comparison or migration claim has been completed.

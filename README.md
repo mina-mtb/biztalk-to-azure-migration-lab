@@ -57,17 +57,20 @@ flowchart LR
 - [x] Visual Studio 2019 Enterprise installed and verified
 - [x] Visual Studio 2019 component readiness verified for BizTalk Developer Tools
 - [x] BizTalk Server 2020 prerequisites verified and configured (.NET 4.8, VC++ x86/x64, OLE DB 18.7.4.0, Hardened Local MSDTC)
-- [x] Basic Service Bus namespace and queue created; send, Peek, PeekLock, Complete, and dead-letter behavior observed in the Portal
+- [x] Basic Service Bus namespace and queue created; send, Peek, PeekLock, Complete, Abandon/redelivery, and dead-letter behavior observed
+- [x] F11 Function App created on Flex Consumption with the .NET 10 isolated runtime
+- [x] ProcessOrderMessage consumer built, published, deployed, and discovered in F11
+- [x] Automated Complete and invalid JSON dead-letter paths observed
 
 ### In progress
 
 - [ ] BizTalk Server 2020 media acquisition `[BLOCKED — installation media]`
 - [ ] A1 Service Bus Queue Delivery and Settlement
-- [ ] Verify the initiated .NET 8 Function App deployment
+- [ ] Observe the Defer path and retrieve the deferred message by sequence number
 
 ### Next
 
-- [ ] Connect a minimal Azure Function consumer to the Service Bus queue
+- [ ] Complete the remaining A1 architecture review and migration lesson
 - [ ] Resume BizTalk Server 2020 installation when legitimate supported media is available
 - [ ] Install BizTalk Server 2020 core components
 - [ ] Configure BizTalk Server 2020 single-machine environment
@@ -122,16 +125,16 @@ The project tracks both hands-on implementation and the ability to understand, e
 | BizTalk Server | Not installed |
 | Microsoft BizTalk Pattern Labs | Not started |
 | Discovery | Not started |
-| Azure Migration | Not started |
+| Azure Migration | In progress (A1 Service Bus lab) |
 | Validation | Not started |
-| Deployment | Not started |
+| Deployment | F11 consumer deployed; controlled lab validation in progress |
 
 ## Repository structure
 
 - `docs/` contains discovery notes, architecture records, the migration roadmap, the Azure pattern-lab execution plan, learning notes, and the lab setup log.
 - `legacy-biztalk/` is reserved for the legacy sample solution and related artifacts after they exist.
-- `azure/` is reserved for future Azure implementation artifacts after migration design is complete.
+- `azure/` contains the current Azure learning-lab implementation artifacts.
 
 ## Status
 
-The stable prerequisite baseline, learning review, and Visual Studio readiness verification are complete. BizTalk Server is not installed because legitimate media acquisition is blocked; the next executable task is the first Azure-side queue behavior lab after subscription and cost approval.
+The stable prerequisite baseline and initial Service Bus consumer deployment are complete. BizTalk Server is not installed because legitimate media acquisition is blocked. A1 remains in progress while Defer, the final architecture review, the migration lesson, and cleanup remain unfinished.

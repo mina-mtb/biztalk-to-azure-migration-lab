@@ -231,7 +231,7 @@ Complete records successful processing and settles the message. The message is r
 
 ### What does Abandon mean?
 
-Abandon releases the current lock and makes the message available for redelivery. It is appropriate when processing cannot complete now and retry may succeed.
+Abandon releases the current lock and makes the message available for redelivery. In the lab, the Function's Abandon path was executed and the message becoming available for redelivery was observed directly.
 
 ### What does Defer mean?
 
@@ -251,7 +251,7 @@ Maximum queue size limits the storage capacity available to the entity. Capacity
 
 ### What does maximum delivery count control?
 
-It limits repeated delivery attempts after locks are abandoned or expire. When the count is exceeded, Service Bus moves the message to the dead-letter queue.
+It limits repeated delivery attempts after locks are abandoned or expire. When the count is exceeded, Service Bus moves the message to the dead-letter queue. The current `q1` setting is `10`.
 
 ### What does message TTL control?
 
@@ -272,6 +272,34 @@ Partitioning was not enabled without a throughput and ordering requirement. Its 
 ### What ordering question should be answered before selecting sessions or partitioning?
 
 Is ordering required globally, or only per business entity such as `OrderId`, `CustomerId`, or `AccountId`? If ordering is per entity, Service Bus sessions should be evaluated so entities can process concurrently while preserving order within each session.
+
+### Why is `AutoCompleteMessages = false` used in this consumer?
+
+It prevents the Functions runtime from automatically completing successful invocations. `ProcessOrderMessage` explicitly chooses Complete, Abandon, Defer, or Dead-letter so settlement behavior can be learned and observed.
+
+### Who validates JSON and required business fields?
+
+Service Bus transports the message without enforcing the order contract. The consumer parses JSON and checks `orderId`, `customerId`, and `amount`, then dead-letters malformed or incomplete messages with a reason.
+
+### What is the difference between build, publish, and deploy?
+
+Build compiles and verifies the code locally. Publish creates the complete runtime-ready Functions artifact; deploy transfers that published artifact to the Function App.
+
+### Why did the first Function deployment package fail?
+
+The source tree was zipped instead of the publish output, so `.azurefunctions/` was not at the package root. The corrected package used the contents of the Release publish directory and was deployed successfully through the Flex Consumption One Deploy path.
+
+### What was verified in the Function metadata and Integration view?
+
+The deployed function uses the .NET isolated worker, a single Service Bus trigger for `q1`, the configured connection-setting reference, and explicit settlement. No output binding is currently defined.
+
+### What do Function invocations and metrics show?
+
+Invocations show individual executions and their outcomes. Metrics show operational statistics; they are not a message-body inspection tool.
+
+### Why is a completed message body no longer visible in the queue?
+
+Complete settles and removes the active message. Its body is available only if it was retained elsewhere, peeked before completion, dead-lettered, or deliberately logged; sensitive bodies should not be logged by default.
 
 ## Migration Approach
 
